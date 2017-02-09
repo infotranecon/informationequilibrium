@@ -1,0 +1,2 @@
+# informationequilibrium
+Information equilibrium models
