@@ -1,0 +1,564 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     18536,        555]
+NotebookOptionsPosition[     17539,        523]
+NotebookOutlinePosition[     17885,        538]
+CellTagsIndexPosition[     17842,        535]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"dpi", "=", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"1900", "+", 
+        FractionBox[
+         RowBox[{"FromDate", "[", 
+          RowBox[{"Normal", "[", 
+           RowBox[{"#", "[", 
+            RowBox[{"[", "1", "]"}], "]"}], "]"}], "]"}], 
+         RowBox[{"365.24", "*", "3600", "*", "24"}]], "+", "0.25"}], ",", 
+       RowBox[{"#", "[", 
+        RowBox[{"[", "2", "]"}], "]"}]}], "}"}], "&"}], "/@", 
+    RowBox[{"Drop", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{
+       "Import", "[", 
+        "\"\<C:\\\\Users\\\\dp864c\\\\Desktop\\\\SAVED \
+DESKTOP\\\\DPI.xls\>\"", "]"}], "[", 
+       RowBox[{"[", "1", "]"}], "]"}], ",", "11"}], "]"}]}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"DPI", "=", 
+  RowBox[{"Interpolation", "[", 
+   RowBox[{"dpi", ",", 
+    RowBox[{"InterpolationOrder", "\[Rule]", "1"}]}], "]"}]}]}], "Input",
+ CellChangeTimes->{{3.7063546070525694`*^9, 3.7063546173523054`*^9}, {
+  3.706354818097286*^9, 3.706354822717779*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"pce", "=", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"1900", "+", 
+        FractionBox[
+         RowBox[{"FromDate", "[", 
+          RowBox[{"Normal", "[", 
+           RowBox[{"#", "[", 
+            RowBox[{"[", "1", "]"}], "]"}], "]"}], "]"}], 
+         RowBox[{"365.24", "*", "3600", "*", "24"}]], "+", "0.25"}], ",", 
+       RowBox[{"#", "[", 
+        RowBox[{"[", "2", "]"}], "]"}]}], "}"}], "&"}], "/@", 
+    RowBox[{"Drop", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{
+       "Import", "[", 
+        "\"\<C:\\\\Users\\\\dp864c\\\\Desktop\\\\SAVED \
+DESKTOP\\\\PCEC.xls\>\"", "]"}], "[", 
+       RowBox[{"[", "1", "]"}], "]"}], ",", "11"}], "]"}]}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"PCE", "=", 
+  RowBox[{"Interpolation", "[", 
+   RowBox[{"pce", ",", 
+    RowBox[{"InterpolationOrder", "\[Rule]", "1"}]}], "]"}]}]}], "Input",
+ CellChangeTimes->{{3.7063546288668103`*^9, 3.706354640400915*^9}, {
+  3.7063548162389336`*^9, 3.7063548284136333`*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"tnw", "=", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"1900", "+", 
+        FractionBox[
+         RowBox[{"FromDate", "[", 
+          RowBox[{"Normal", "[", 
+           RowBox[{"#", "[", 
+            RowBox[{"[", "1", "]"}], "]"}], "]"}], "]"}], 
+         RowBox[{"365.24", "*", "3600", "*", "24"}]], "+", "0.25"}], ",", 
+       RowBox[{"#", "[", 
+        RowBox[{"[", "2", "]"}], "]"}]}], "}"}], "&"}], "/@", 
+    RowBox[{"Drop", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{
+       "Import", "[", 
+        "\"\<C:\\\\Users\\\\dp864c\\\\Desktop\\\\SAVED \
+DESKTOP\\\\TNWBSHNO.xls\>\"", "]"}], "[", 
+       RowBox[{"[", "1", "]"}], "]"}], ",", "11"}], "]"}]}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"tnw", "=", 
+   RowBox[{"DeleteCases", "[", 
+    RowBox[{"tnw", ",", 
+     RowBox[{"x_", "/;", 
+      RowBox[{
+       RowBox[{"x", "[", 
+        RowBox[{"[", "2", "]"}], "]"}], "\[Equal]", "0"}]}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"TNW", "=", 
+  RowBox[{"Interpolation", "[", 
+   RowBox[{"tnw", ",", 
+    RowBox[{"InterpolationOrder", "\[Rule]", "1"}]}], "]"}]}]}], "Input",
+ CellChangeTimes->{{3.7063546581923933`*^9, 3.706354692143123*^9}, {
+  3.706354799168971*^9, 3.7063548121830378`*^9}, {3.7063551151824384`*^9, 
+  3.706355130717785*^9}}],
+
+Cell[BoxData[
+ RowBox[{"minyear", "=", 
+  RowBox[{"Max", "[", 
+   RowBox[{
+    RowBox[{"tnw", "[", 
+     RowBox[{"[", 
+      RowBox[{"1", ",", "1"}], "]"}], "]"}], ",", 
+    RowBox[{"pce", "[", 
+     RowBox[{"[", 
+      RowBox[{"1", ",", "1"}], "]"}], "]"}], ",", 
+    RowBox[{"dpi", "[", 
+     RowBox[{"[", 
+      RowBox[{"1", ",", "1"}], "]"}], "]"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.706354751333406*^9, 3.7063547762851667`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"maxyear", "=", 
+  RowBox[{"Min", "[", 
+   RowBox[{
+    RowBox[{"tnw", "[", 
+     RowBox[{"[", 
+      RowBox[{
+       RowBox[{"-", "1"}], ",", "1"}], "]"}], "]"}], ",", 
+    RowBox[{"pce", "[", 
+     RowBox[{"[", 
+      RowBox[{
+       RowBox[{"-", "1"}], ",", "1"}], "]"}], "]"}], ",", 
+    RowBox[{"dpi", "[", 
+     RowBox[{"[", 
+      RowBox[{
+       RowBox[{"-", "1"}], ",", "1"}], "]"}], "]"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.7063547829501953`*^9, 3.7063547907275877`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"obj", "=", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"Log", "[", 
+       RowBox[{"PCE", "[", "yy", "]"}], "]"}], "-", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"aa", " ", 
+         RowBox[{"Log", "[", 
+          RowBox[{"DPI", "[", "yy", "]"}], "]"}]}], "+", 
+        RowBox[{"bb", " ", 
+         RowBox[{"Log", "[", 
+          RowBox[{"TNW", "[", "yy", "]"}], "]"}]}], "+", "cc"}], ")"}]}], ",", 
+     RowBox[{"{", 
+      RowBox[{"yy", ",", "minyear", ",", "maxyear", ",", "0.25"}], "}"}]}], 
+    "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.7063548598900266`*^9, 3.706354955454043*^9}, {
+  3.7063550248436003`*^9, 3.7063550355766015`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"{", 
+   RowBox[{"min", ",", "sol"}], "}"}], "=", 
+  RowBox[{"FindMinimum", "[", 
+   RowBox[{
+    RowBox[{"Total", "[", 
+     RowBox[{"Abs", "[", "obj", "]"}], "]"}], ",", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"aa", ",", "1"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"bb", ",", "1"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"cc", ",", "0"}], "}"}]}], "}"}], ",", 
+    RowBox[{"Method", "\[Rule]", "\"\<PrincipalAxis\>\""}]}], 
+   "]"}]}]], "Input",
+ CellChangeTimes->{{3.7063549741090846`*^9, 3.706354993844502*^9}, {
+  3.7063552278127627`*^9, 3.706355234762331*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"aa", "+", "bb"}], "/.", "sol"}]], "Input",
+ CellChangeTimes->{{3.7063615563160877`*^9, 3.706361556581298*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"plotoptions", "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"PlotStyle", "\[Rule]", 
+      RowBox[{"Opacity", "[", "0.7", "]"}]}], ",", 
+     RowBox[{"AspectRatio", "\[Rule]", 
+      RowBox[{"1", "/", "2"}]}], ",", 
+     RowBox[{"Frame", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{"True", ",", "True", ",", "False", ",", "False"}], "}"}]}], 
+     ",", 
+     RowBox[{"Axes", "\[Rule]", "False"}], ",", 
+     RowBox[{"ImageSize", "\[Rule]", 
+      RowBox[{"11", "*", "72"}]}], ",", 
+     RowBox[{"BaseStyle", "\[Rule]", 
+      RowBox[{"FontSize", "\[Rule]", "15"}]}]}], "}"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.7063558495987134`*^9, 3.7063558570262184`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"LogPlot", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       RowBox[{"Exp", "[", 
+        RowBox[{
+         RowBox[{"aa", " ", 
+          RowBox[{"Log", "[", 
+           RowBox[{"DPI", "[", "yy", "]"}], "]"}]}], "+", 
+         RowBox[{"bb", " ", 
+          RowBox[{"Log", "[", 
+           RowBox[{"TNW", "[", "yy", "]"}], "]"}]}], "+", "cc"}], "]"}], "/", 
+       "1000"}], "/.", "sol"}], ",", 
+     RowBox[{
+      RowBox[{"PCE", "[", "yy", "]"}], "/", "1000"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"yy", ",", "minyear", ",", "maxyear"}], "}"}], ",", 
+   RowBox[{"Evaluate", "[", 
+    RowBox[{"Sequence", "@@", "plotoptions"}], "]"}], ",", 
+   RowBox[{"FrameLabel", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"\"\<Year\\n\>\"", ",", "\"\<\\nPCE [T$]\>\""}], "}"}]}], ",", 
+   RowBox[{"PlotLegends", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"\"\<Model\>\"", ",", "\"\<Data\>\""}], "}"}]}]}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.7063552423312826`*^9, 3.706355292486061*^9}, {
+  3.706355523819521*^9, 3.7063555316117716`*^9}, {3.7063556609280853`*^9, 
+  3.7063556647978354`*^9}, {3.706355860475774*^9, 3.706355875533581*^9}, {
+  3.706355995450342*^9, 3.7063560031082935`*^9}, {3.706364045856612*^9, 
+  3.706364045984612*^9}}],
+
+Cell[BoxData[
+ RowBox[{"Plot", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"100", 
+       RowBox[{"D", "[", 
+        RowBox[{
+         RowBox[{"Log", "[", 
+          RowBox[{
+           RowBox[{"Exp", "[", 
+            RowBox[{
+             RowBox[{"aa", " ", 
+              RowBox[{"Log", "[", 
+               RowBox[{"DPI", "[", "yy", "]"}], "]"}]}], "+", 
+             RowBox[{"bb", " ", 
+              RowBox[{"Log", "[", 
+               RowBox[{"TNW", "[", "yy", "]"}], "]"}]}], "+", "cc"}], "]"}], "/.",
+            "sol"}], "]"}], ",", "yy"}], "]"}]}], "/.", 
+      RowBox[{"yy", "\[Rule]", "y"}]}], ",", 
+     RowBox[{
+      RowBox[{"100", 
+       RowBox[{"D", "[", 
+        RowBox[{
+         RowBox[{"Log", "[", 
+          RowBox[{"PCE", "[", "yy", "]"}], "]"}], ",", "yy"}], "]"}]}], "/.", 
+      RowBox[{"yy", "\[Rule]", "y"}]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"y", ",", "minyear", ",", "maxyear"}], "}"}], ",", 
+   RowBox[{"Evaluate", "[", 
+    RowBox[{"Sequence", "@@", "plotoptions"}], "]"}], ",", 
+   RowBox[{"PlotRange", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"-", "19"}], ",", "29"}], "}"}]}], ",", 
+   RowBox[{"FrameLabel", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"\"\<Year\\n\>\"", ",", "\"\<\\nPCE growth [%]\>\""}], "}"}]}], 
+   ",", 
+   RowBox[{"PlotLegends", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"\"\<Model\>\"", ",", "\"\<Data\>\""}], "}"}]}]}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.7063575334468555`*^9, 3.7063575361944904`*^9}, {
+  3.706364049936612*^9, 3.706364050112612*^9}}],
+
+Cell[BoxData[
+ RowBox[{"nlm", "=", 
+  RowBox[{"NonlinearModelFit", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"#", "[", 
+         RowBox[{"[", "1", "]"}], "]"}], ",", 
+        RowBox[{"Log", "[", 
+         RowBox[{"#", "[", 
+          RowBox[{"[", "2", "]"}], "]"}], "]"}]}], "}"}], "&"}], "/@", 
+     "pce"}], ",", 
+    RowBox[{
+     RowBox[{"aa", " ", 
+      RowBox[{"Log", "[", 
+       RowBox[{"DPI", "[", "yy", "]"}], "]"}]}], "+", 
+     RowBox[{"bb", " ", 
+      RowBox[{"Log", "[", 
+       RowBox[{"TNW", "[", "yy", "]"}], "]"}]}], "+", "cc"}], ",", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"aa", ",", "1"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"bb", ",", "1"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"cc", ",", "0"}], "}"}]}], "}"}], ",", "yy"}], 
+   "]"}]}]], "Input",
+ CellChangeTimes->{{3.706355341429288*^9, 3.7063553809853287`*^9}, {
+  3.7063554132509103`*^9, 3.7063554740040207`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"nlm", "[", "\"\<ParameterTable\>\"", "]"}]], "Input",
+ CellChangeTimes->{{3.7063564335055676`*^9, 3.706356440045843*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"aa", "+", "bb"}], "/.", 
+  RowBox[{"nlm", "[", "\"\<BestFitParameters\>\"", "]"}]}]], "Input",
+ CellChangeTimes->{{3.706361535687292*^9, 3.7063615458234835`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"LogPlot", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"Exp", "[", 
+       RowBox[{"Normal", "[", "nlm", "]"}], "]"}], "/", "1000"}], ",", 
+     RowBox[{
+      RowBox[{"PCE", "[", "yy", "]"}], "/", "1000"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"yy", ",", "minyear", ",", "maxyear"}], "}"}], ",", 
+   RowBox[{"Evaluate", "[", 
+    RowBox[{"Sequence", "@@", "plotoptions"}], "]"}], ",", 
+   RowBox[{"FrameLabel", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"\"\<Year\\n\>\"", ",", "\"\<\\nPCE [T$]\>\""}], "}"}]}], ",", 
+   RowBox[{"PlotLegends", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"\"\<Model\>\"", ",", "\"\<Data\>\""}], "}"}]}]}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.7063554649279566`*^9, 3.706355478327138*^9}, {
+  3.706355534700512*^9, 3.7063555388760304`*^9}, {3.706355654355569*^9, 
+  3.7063556571343336`*^9}, {3.7063558843498683`*^9, 3.7063558844998665`*^9}, {
+  3.7063559546230035`*^9, 3.7063559640825434`*^9}, {3.706363901369274*^9, 
+  3.706363901587672*^9}}],
+
+Cell[BoxData[
+ RowBox[{"Plot", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"100", 
+       RowBox[{"D", "[", 
+        RowBox[{
+         RowBox[{"Log", "[", 
+          RowBox[{"Exp", "[", 
+           RowBox[{"Normal", "[", "nlm", "]"}], "]"}], "]"}], ",", "yy"}], 
+        "]"}]}], "/.", 
+      RowBox[{"yy", "\[Rule]", "y"}]}], ",", 
+     RowBox[{
+      RowBox[{"100", 
+       RowBox[{"D", "[", 
+        RowBox[{
+         RowBox[{"Log", "[", 
+          RowBox[{"PCE", "[", "yy", "]"}], "]"}], ",", "yy"}], "]"}]}], "/.", 
+      RowBox[{"yy", "\[Rule]", "y"}]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"y", ",", "minyear", ",", "maxyear"}], "}"}], ",", 
+   RowBox[{"Evaluate", "[", 
+    RowBox[{"Sequence", "@@", "plotoptions"}], "]"}], ",", 
+   RowBox[{"PlotRange", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"-", "19"}], ",", "29"}], "}"}]}], ",", 
+   RowBox[{"FrameLabel", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"\"\<Year\\n\>\"", ",", "\"\<\\nPCE growth [%]\>\""}], "}"}]}], 
+   ",", 
+   RowBox[{"PlotLegends", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"\"\<Model\>\"", ",", "\"\<Data\>\""}], "}"}]}]}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.706355552638774*^9, 3.706355691956915*^9}, {
+  3.706355738669406*^9, 3.7063558459287605`*^9}, {3.7063558893350077`*^9, 
+  3.706355943527475*^9}, {3.7063638937525225`*^9, 3.706363894064521*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"obj2", "=", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"D", "[", 
+         RowBox[{
+          RowBox[{"Log", "[", 
+           RowBox[{"PCE", "[", "yy", "]"}], "]"}], ",", "yy"}], "]"}], "-", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"aa", " ", 
+           RowBox[{"D", "[", 
+            RowBox[{
+             RowBox[{"Log", "[", 
+              RowBox[{"DPI", "[", "yy", "]"}], "]"}], ",", "yy"}], "]"}]}], 
+          "+", 
+          RowBox[{"bb", " ", 
+           RowBox[{"D", "[", 
+            RowBox[{
+             RowBox[{"Log", "[", 
+              RowBox[{"TNW", "[", "yy", "]"}], "]"}], ",", "yy"}], "]"}]}]}], 
+         ")"}]}], ")"}], "/.", 
+      RowBox[{"yy", "\[Rule]", "y"}]}], ",", 
+     RowBox[{"{", 
+      RowBox[{"y", ",", "minyear", ",", "maxyear", ",", "0.25"}], "}"}]}], 
+    "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.7063548598900266`*^9, 3.706354955454043*^9}, {
+  3.7063550248436003`*^9, 3.7063550355766015`*^9}, {3.706356126638993*^9, 
+  3.706356199361608*^9}, {3.7063562454303308`*^9, 3.706356273144761*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"{", 
+   RowBox[{"min2", ",", "sol2"}], "}"}], "=", 
+  RowBox[{"FindMinimum", "[", 
+   RowBox[{
+    RowBox[{"Total", "[", 
+     RowBox[{"Abs", "[", "obj2", "]"}], "]"}], ",", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"aa", ",", "1"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"bb", ",", "1"}], "}"}]}], "}"}], ",", 
+    RowBox[{"Method", "\[Rule]", "\"\<PrincipalAxis\>\""}]}], 
+   "]"}]}]], "Input",
+ CellChangeTimes->{{3.7063549741090846`*^9, 3.706354993844502*^9}, {
+  3.7063552278127627`*^9, 3.706355234762331*^9}, {3.706356120891429*^9, 
+  3.706356122007022*^9}, {3.7063562023923883`*^9, 3.7063562060975647`*^9}, {
+  3.706356254353674*^9, 3.7063562781523294`*^9}, {3.7063564091614013`*^9, 
+  3.7063564196570024`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"obj3", "=", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"D", "[", 
+         RowBox[{
+          RowBox[{"Log", "[", 
+           RowBox[{"PCE", "[", "yy", "]"}], "]"}], ",", "yy"}], "]"}], "-", 
+        RowBox[{"(", 
+         RowBox[{"aa", " ", 
+          RowBox[{"D", "[", 
+           RowBox[{
+            RowBox[{"Log", "[", 
+             RowBox[{"DPI", "[", "yy", "]"}], "]"}], ",", "yy"}], "]"}]}], 
+         ")"}]}], ")"}], "/.", 
+      RowBox[{"yy", "\[Rule]", "y"}]}], ",", 
+     RowBox[{"{", 
+      RowBox[{"y", ",", "minyear", ",", "maxyear", ",", "0.25"}], "}"}]}], 
+    "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.7063548598900266`*^9, 3.706354955454043*^9}, {
+  3.7063550248436003`*^9, 3.7063550355766015`*^9}, {3.706356126638993*^9, 
+  3.706356199361608*^9}, {3.7063562454303308`*^9, 3.706356273144761*^9}, {
+  3.7063633278382063`*^9, 3.7063633354579573`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"{", 
+   RowBox[{"min3", ",", "sol3"}], "}"}], "=", 
+  RowBox[{"FindMinimum", "[", 
+   RowBox[{
+    RowBox[{"Total", "[", 
+     RowBox[{"Abs", "[", "obj3", "]"}], "]"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"{", 
+      RowBox[{"aa", ",", "1"}], "}"}], "}"}], ",", 
+    RowBox[{"Method", "\[Rule]", "\"\<PrincipalAxis\>\""}]}], 
+   "]"}]}]], "Input",
+ CellChangeTimes->{{3.7063549741090846`*^9, 3.706354993844502*^9}, {
+  3.7063552278127627`*^9, 3.706355234762331*^9}, {3.706356120891429*^9, 
+  3.706356122007022*^9}, {3.7063562023923883`*^9, 3.7063562060975647`*^9}, {
+  3.706356254353674*^9, 3.7063562781523294`*^9}, {3.7063564091614013`*^9, 
+  3.7063564196570024`*^9}, {3.7063633303819895`*^9, 3.706363339270333*^9}}]
+},
+WindowSize->{1201, 837},
+WindowMargins->{{277, Automatic}, {62, Automatic}},
+FrontEndVersion->"10.3 for Microsoft Windows (64-bit) (October 9, 2015)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 1036, 30, 68, "Input"],
+Cell[1597, 52, 1039, 30, 68, "Input"],
+Cell[2639, 84, 1355, 40, 108, "Input"],
+Cell[3997, 126, 442, 13, 31, "Input"],
+Cell[4442, 141, 513, 16, 31, "Input"],
+Cell[4958, 159, 716, 20, 31, "Input"],
+Cell[5677, 181, 649, 19, 31, "Input"],
+Cell[6329, 202, 145, 3, 31, "Input"],
+Cell[6477, 207, 705, 18, 52, "Input"],
+Cell[7185, 227, 1294, 33, 52, "Input"],
+Cell[8482, 262, 1580, 45, 72, "Input"],
+Cell[10065, 309, 1000, 31, 31, "Input"],
+Cell[11068, 342, 145, 2, 31, "Input"],
+Cell[11216, 346, 197, 4, 31, "Input"],
+Cell[11416, 352, 1041, 25, 52, "Input"],
+Cell[12460, 379, 1397, 39, 52, "Input"],
+Cell[13860, 420, 1152, 32, 31, "Input"],
+Cell[15015, 454, 789, 20, 31, "Input"],
+Cell[15807, 476, 972, 26, 31, "Input"],
+Cell[16782, 504, 753, 17, 31, "Input"]
+}
+]
+*)
+
+(* End of internal cache information *)
